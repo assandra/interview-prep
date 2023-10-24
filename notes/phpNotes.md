@@ -82,4 +82,32 @@ They are both used to skip iterations of a loop and hence can be a useful way to
 
 ## Scoping in PHP
 
+## Method chaining
+Joining of multiple methods called on an object so as to increase the readability of the code 
 
+Without method chaining:
+```php
+
+$obj = new studentDetails();
+$obj->setStudentId(1423);
+$obj->setStudentName('John');
+$obj->setStudentAddress('LA');
+```
+
+With method chaining:
+```php
+$obj = new studentDetails();
+$studentInfo = $obj->setStudentId(1423)
+                   ->setStudentName('John')
+                   ->setStudentAddress('LA');
+```
+
+For method chaining to work you need to return $this object in the methods so the next method that is chained on can handle that object.
+
+
+```php
+ public function setStudentAddress($address) {
+  $this->address = $address;
+  return $this;
+ }
+```
